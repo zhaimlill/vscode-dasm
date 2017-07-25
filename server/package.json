@@ -12,14 +12,14 @@
     "url": "git+https://github.com/zeh/vscode-dasm-server.git"
   },
   "dependencies": {
-    "dasm": "^4.3.0",
+    "dasm": "^4.4.1",
     "simplesignal": "^3.1.0",
     "vscode-languageserver": "^3.2.2"
   },
   "devDependencies": {
-    "@types/node": "^7.0.22",
+    "@types/node": "^7.0.39",
     "tslint": "^5.5.0",
-    "typescript": "^2.3.3"
+    "typescript": "^2.4.2"
   },
   "scripts": {
     "compile": "installServerIntoExtension ../client/out ./package.json ./tsconfig.json && tsc -p .",

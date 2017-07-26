@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "noImplicitAny": true,
-        "strictNullChecks": true,
+		"noImplicitAny": true,
+		"strict": true,
         "target": "es6",
         "outDir": "out",
         "allowJs": true,
@@ -12,7 +12,11 @@
         ],
         "sourceMap": true,
         "rootDir": "."
-    },
+	},
+	"files": [
+		"./src/debugger.ts",
+		"./src/extension.ts"
+	],
     "exclude": [
         "node_modules",
         ".vscode-test",

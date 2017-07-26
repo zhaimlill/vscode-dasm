@@ -18,6 +18,7 @@ import {
 import * as path from "path";
 
 import RomAssembler from "./assembler/RomAssembler";
+import PlayerTabProvider from "./player/PlayerTabProvider";
 
 // https://code.visualstudio.com/docs/extensions/overview
 // https://code.visualstudio.com/docs/extensionAPI/overview
@@ -68,6 +69,12 @@ export function activate(context:ExtensionContext) {
 			JSON.stringify(getInitialConfigurations(), null, "\t"),
 		].join("\n");
 	}));
+
+	// Register tab provider so we can open a preview tab when we start debugging
+	const previewTabProvider = new PlayerTabProvider(context, "extension.vscode-dasm.openPlayerWindow", (config) => {
+		commands.executeCommand("vscode.startDebug", config);
+	});
+	context.subscriptions.push(previewTabProvider);
 
 	console.log("vscode-dasm is now active.");
 }

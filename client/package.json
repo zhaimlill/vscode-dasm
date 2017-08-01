@@ -190,7 +190,7 @@
   },
   "dependencies": {
     "core-js": "^2.4.1",
-    "dasm": "^4.4.1",
+    "dasm": "^5.0.1",
     "microevent.ts": "^0.1.0",
     "path": "^0.12.7",
     "screenfull": "^3.3.1",

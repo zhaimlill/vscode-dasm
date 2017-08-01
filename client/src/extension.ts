@@ -17,7 +17,6 @@ import {
 
 import * as path from "path";
 
-import RomAssembler from "./assembler/RomAssembler";
 import PlayerTabProvider from "./player/PlayerTabProvider";
 
 // https://code.visualstudio.com/docs/extensions/overview

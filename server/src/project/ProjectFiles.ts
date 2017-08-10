@@ -261,8 +261,8 @@ export default class ProjectFiles {
 				process,
 			};
 			this._queuedUpdateProcessId = setTimeout(() => {
-				process();
 				this.clearQueuedFileUpdate();
+				process();
 			}, this._debounceTime);
 		} else {
 			// Can execute immediately

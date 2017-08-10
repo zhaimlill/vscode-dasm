@@ -323,12 +323,13 @@ export default class ProjectFiles {
 		console.log("[PF] Updating dependencies for file", file.uri);
 		if (file.contents) {
 			// Parse all dependencies in a file's source
+			const projectRoot = this.getProjectRoot();
 			const filePath = url.parse(file.uri).pathname;
-			const parentLocation = filePath ? path.posix.relative(this.getProjectRoot(), path.posix.dirname(filePath)) : "";
+			const parentLocation = filePath ? path.posix.relative(projectRoot, path.posix.dirname(filePath)) : "";
 			console.log("[PF] ...parent location is", parentLocation);
 			const newFileDependencyLinks = resolveIncludes(file.contents, this.getFileFrom(parentLocation), undefined, false);
 			const newFileDependencyUris = newFileDependencyLinks.map((dependencyLink) => {
-				const newFileUri = PathUtils.platformPathToUri(path.posix.resolve(parentLocation, dependencyLink.parentRelativeUri));
+				const newFileUri = PathUtils.platformPathToUri(path.posix.resolve(projectRoot, parentLocation, dependencyLink.parentRelativeUri));
 				console.log("[PF] ... ...dependency is at", newFileUri);
 				return newFileUri;
 			});

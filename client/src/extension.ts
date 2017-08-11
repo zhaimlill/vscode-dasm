@@ -69,6 +69,17 @@ export function activate(context:ExtensionContext) {
 		].join("\n");
 	}));
 
+	// 			"debugServer": 4711
+
+	context.subscriptions.push(commands.registerCommand("extension.vscode-dasm.getCurrentProgramName", () => {
+		// const workspaceUri = workspace.rootPath;
+		// const currentFile = getCurrentFile();
+		// if (workspaceUri && currentFile) {
+		// 	return currentFile.fsPath;
+		// }
+		return "?";
+	}));
+
 	// Register tab provider so we can open a preview tab when we start debugging
 	const previewTabProvider = new PlayerTabProvider(context, "extension.vscode-dasm.openPlayerWindow", (config) => {
 		commands.executeCommand("vscode.startDebug", config);
@@ -97,7 +108,8 @@ function getInitialConfigurations() {
 				type: "dasm",
 				request: "launch",
 				name: "dasm Debug",
-				program: entryUri ? ("${workspaceRoot}/" + entryUri) : "${workspaceRoot}/entry.asm",
+				// program: entryUri ? ("${workspaceRoot}/" + entryUri) : "${workspaceRoot}/entry.asm",
+				program: "${command:GetCurrentProgramName}",
 				stopOnEntry: true,
 			},
 		],
